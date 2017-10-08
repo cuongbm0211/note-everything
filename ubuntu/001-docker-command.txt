@@ -1,0 +1,126 @@
+Docker compose:
+
+LAMP: Linux 1 doker, Apache 1 docker, MySQL 1 docker ...  de sau nay co the scale
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+docker [option] [command] [arguments]
+
+docker ps
+docker images
+docker search ubuntu
+docker pull ubuntu
+docker run ubuntu
+docker rm
+docker ps -a # To view all containers — active and inactive, pass it the -a switch:
+docker ps -l # To view the latest container you created, pass it the -l switch
+docker stop container-id # Stopping a running or active container is as simple as typing
+docker rmi ubuntu # Remove Images ubuntu
+
+docker logs -f <docker-name>
+
+docker run -it gsviec/php bash # Go to bash o container
+
+# Run docker in background them "-d" (same run in linux them lenh &)
+docker run -p 8080:80 -d nginx
+docker run -p 8000:80 -d nginx # Here is example one images many container
+
+# Create container from images
+docker create -p 9000:80 nginix
+docker ps -a # list all container (active and inactive)
+docker start 654654664 # start container
+docker rm 654654664 # remove container
+
+# Stop all container
+docker stop $(docker ps -qa) # Stop all container
+docker rm $(docker ps -qa) # Remove all container
+
+
+
+docker run -it ubuntu # The combination of the -i and -t switches gives you interactive shell access into the container
+
+When you start up a Docker image, you can create, modify, and delete files just like you can with a virtual machine
+
+Senario 1: Add nodejs to ubuntu
+docker run -it ubuntu # run ubuntu
+apt-get update & apt-get install -y nodejs # install node js
+exit
+docker commit -m "What did you do to the image" -a "Author Name" container-id repository/new_image_name
+docker commit -m "added node.js" -a "Sunday Ogwu-Chinuwa" d9b100f2f636 finid/ubuntu-nodejs
+docker images # finid/ubuntu-nodejs       latest              62359544c9ba        50 seconds ago      206.6 MB
+--> We can have another way to create image is use docker-file (we already used in S+)
+
+Ebook: Docker cookbook 
+
+
+################
+# Create dockerfile
+FROM ubuntu
+
+MAINTAINER CuongBM <cuongbm0211@gmail.com>
+
+# Install nginx
+RUN apt-get update -y && \
+        apt-get install -y \
+        nginx
+
+
+##################
+
+# build docker file
+docker build -t gsviec/ubuntu-nginx
+
+VOLUME ["var/www/html"]    # Noi muon save data for example mysql
+WORKDIR /var/www/html      # Khi start se lam viec tren thu muc nay
+EXPOSE 9000	                    # Port expose ra ngoai
+CMD ["usr/sbin/php5-fpm"]   # Cau lenh khi start docker
+
+
+======
+docker file: nguoi dung image biet duoc trong file docker co nhung gi. Yen tam su dung
+
+# Cach dat ten cho docker, cai dat mysql
+docker run --name mysqlwp -e MYSQL_ROOT_PASSWORD=admin -d mysql # -e: environment
+
+# Cai dat wordpress link with mysql
+docker run --name wordpress --link mysqlwp:mysql -p 80:80 wordpress
+
+# Cach backup mysql trong docker
+docker exec mysqlwp mysqldump --all-databases --password=wordpressdocker > wordpress.backup
+
+# Cach 2 backup, run mount voi tham so -v (volume)
+docker run mysql --name mysqlwp =v $(pwd):/var/lib/mysql
+
+Luu y khi mount o, bat buoc thu muc mount tai may host phai emply, neu no khac empty --> docker se hieu day la data can phai import vao he thong
+
+==========
+Docker compse file example:
+
+version: '2'   # version docker compose using
+
+services:
+	mysqL:			# Same --name in commandl line
+		image: mysql    # Image run
+		restart: always   # resatart when docker-compose restart
+		env_file:
+			- variable.env # File cha thong tin username, password mysql
+		volumes:
+			- ./data/mysql:/docker-entrypoint-initdb.d
+	wordpress:
+		depends_on:
+			- mysql              # phai link, ==> toan bo domain trong container nay call den mysql container se la: mysql
+		images: wordpress
+		ports:
+			- "80:80"
+		restart: always
+		working+dir: /var/www/html
+
+============
+Cau hinh file nginx tro toi phpfpm:9000
+
+location ~ \.php {
+	fastcgi_pass phpfpm:9000 # luu y trong file docker compose phai co su dung link container thi file nay moi work
+}
+
+========
+Nguyen ly docker:
+- Moi container chi chay du nhat 1 service --> sau nay scale cuc ky de

@@ -1,0 +1,162 @@
+Re: Remote
+Di: Dictionary
+s: Server
+
+Command:
+== Set expire time
+SET greeting "Hello world"
+GET greeting
+EXPIRE greeting 50 // Set expire time 50s
+TTL greeting             // Check expire time greeting
+
+== Set expire time in on command
+SETEX greeting 50 "Hello world"
+
+== Remove expire time
+PERSIST greeting
+TTL greeting
+
+== Multiple set
+MSET key1 "Hello" key2 "World"
+
+== Append to value
+APPEND key1 " World"
+GET key1
+
+== Rename key
+RENAME key1 greeting
+GET greeting
+
+== Xoa toan bo index
+FLUSHALLL
+
+== Work with list
+LPUSH people "Brad" // Left push
+LPUSH people "Jen"
+LPUSH people "Tom"
+
+== Get all people
+LRANGE pople 0 -1 // -1 mean get all
+
+== Right push
+RPUSH people Harry
+LRANGE pople 0 -1
+
+== Get length of list
+LLEN people
+
+== Pop people
+LPOP people
+LRANGE 0 -1
+
+RPOP people 
+LRANGE 0 -1
+
+== REDIS WORK WITH SET
+== Add
+SADD cars "Ford"
+SADD cars "Honda"
+SADD cars "BMW"
+
+== Check value exist in set
+SISMEMBER cars "Ford" // 1
+SISMEMBER cars"Chevy" // 0
+
+== Get all member of set 
+SMEMBERS cars // Set member
+
+== Count memmber
+SCARD cars
+
+== Move member from from this set to that set
+SMOVE cars mycar "Ford"
+SMEMBERS cars
+SMEMBERS mycars
+
+== Remove value from set
+SREM cars "BMW"
+SMEMBERS cars
+
+== With with set like: Union, Minus, Intersect
+
+== Sorted set
+== Add
+ZADD users 1986 cuong
+ZADD users 1987 trang
+ZADD users 2012 bee
+
+== Get rank of key
+ZRANK users cuong // return 0
+ZRANK users bee // return 2 
+
+== List all members of sorted set
+ZRANGE 0 -1
+
+== Increase rank for key
+ZINCRBY users 1 "cuong" // return 1987
+
+
+== Redis hash
+== Add
+HSET user:brad name "Brad Traversy"
+HSET user:brad email "brad@gmail.com"
+
+== Get
+HSET user:brad name
+
+== Get all
+HGETALL user:brad
+
+== Set multiple value
+HMSET  
+
+== Get all key
+HKEYS user:brad
+
+== Get all value
+HVALS user:brad
+
+== Increment
+HINCRYBY user:jonh age 1
+
+== Delete 
+HDEL
+
+== Length
+HLEN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

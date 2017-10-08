@@ -1,0 +1,11 @@
+== Docker
+
+== Docker compose
+
+== Curl
+- Add cookie to curl
+curl -H "Cookies: accessToken=%220nFpHqEmcGiRtoz7dMJOJL%22" http://www.google.com/
+
+== Touch
+- Create empty file:
+touch abc.txt
