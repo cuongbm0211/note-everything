@@ -124,3 +124,18 @@ location ~ \.php {
 ========
 Nguyen ly docker:
 - Moi container chi chay du nhat 1 service --> sau nay scale cuc ky de
+
+== 20171009
+Start qpid on docker compose:
+
+Step 1: Build images from dockerfile
+cd /opt/devel/projects/serviceplus/docker/images/qpid
+docker build -t splus-docker.repo.dex.nu/splus-qpid:0.32 .
+
+Step 2: Up qpid by docker-compose
+cd /opt/devel/projects/serviceplus
+docker-compose up qpid
+
+Step 3: Run route 
+cd /opt/devel/projects/serviceplus
+./docker-route.sh
