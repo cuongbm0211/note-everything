@@ -1,0 +1,43 @@
+sample-userinfo
+
+https://api.qa.newsplus.se/v1/oauth2/userinfo?access_token=7qI5KtSiesamJolMY3m5xE
+
+{
+    "sub": "5LOLodZul1BWYzkGLxnF3p",
+    "aud": [
+        "urn:users:owner:4SlrmauYw0KlC4clL3jH8W:0uAK7wv28CxMk2lSBitm9Y"
+    ],
+    "email": "kien.nguyen@niteco.se",
+    "email_verified": true,
+    "name": "k n",
+    "given_name": "k",
+    "family_name": "n"
+}
+
+http://localhost/api/v1/internal/users/2v2rNIz53GLL8RvFO4pFVt
+{
+    "@httpResponseCode": "200",
+    "@requestId": "1DenOyL5VN5vPC2BlKnY0Q",
+    "user": {
+        "id": "2v2rNIz53GLL8RvFO4pFVt",
+        "created": "1477558894884",
+        "updated": "1507702892676",
+        "location": "/2v2rNIz53GLL8RvFO4pFVt",
+        "brandId": "5DuzcZz0j8u0zArSNzZgHO",
+        "accountId": "6kz96GzuubHqBHFV502S0y",
+        "type": "CUSTOMER",
+        "email": "16434a3@di.se",
+        "firstName": "Mikael",
+        "lastName": "E******",
+        "phoneNumber": "0723106743",
+        "active": "1507702892503",
+        "hasEntitlement": "YES",
+        "termsAndConditionsAccepted": "1477558894774",
+        "defaultPaymentMethod": "INVOICE",
+        "externalUserIds": {
+            "system": "PERSNR",
+            "id": "198502180154"
+        }
+    },
+    "internalInfo": null
+}

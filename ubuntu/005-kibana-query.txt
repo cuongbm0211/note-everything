@@ -1,0 +1,7 @@
+// Use * wildcard
+message:"Backend paywall*" AND level:ERROR
+
+message:"*Timeout*" AND level:WARN AND application:"dise-personalized"
+
+// Get http latency
+message: "http token update"
