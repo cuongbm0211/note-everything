@@ -4,7 +4,11 @@
 
 == Curl
 - Add cookie to curl
-curl -H "Cookies: accessToken=%220nFpHqEmcGiRtoz7dMJOJL%22" http://www.google.com/
+curl -H "Cookies: accessToken=%220nFpHqEmcGiRtoz7dMJOJL%22" "http://www.google.com/"
+
+- curl need add double quote to link
+curl "http://google.com/verify-entitlement?access_token=4HXKZaguQpO7R3JmsR9KZS&externalResourceId=di.se-plus"
+
 
 == Touch
 - Create empty file:

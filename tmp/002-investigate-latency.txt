@@ -1,0 +1,2 @@
+Memcache TTL: 1h
+Get data from solr: add extra time 200ms => no need
