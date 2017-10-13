@@ -1,0 +1,13 @@
+== Squash merge 4 commit before
+git rebase -i HEAD~4
+change f, then Ctrl + X
+
+== Undo rebase
+git reflog
+git reset --hard HEAD@{5}
+
+== Go back and forwad commit
+git log --oneline -5
+git checkout 9517443 (go to commit need investigate)
+git checkout master (go to head)
+

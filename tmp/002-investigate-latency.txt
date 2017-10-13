@@ -1,2 +1,9 @@
 Memcache TTL: 1h
 Get data from solr: add extra time 200ms => no need
+
+http://teddyma.cn/2016/02/23/rabbitmq-exchange-design-tradeoffs/
+
+http://grokbase.com/t/qpid/users/123vj3x9aq/performance-1-exchange-n-queues-vs-n-exchanges-n-queues
+
+
+change exchange splus.event, then type is direct
