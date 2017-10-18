@@ -1,0 +1,21 @@
+Job: we need notify on slack when deploy done?
+
+Question: How to write message on slack by code?
+Answer: We use webhook, and use curl command to post data to slack
+curl -v -X POST --data-urlencode "payload=$JSON" https://hooks.slack.com/services/abc/123456  # Post to splus-platform
+
+Question: What language support?
+Answer: Bash shell
+
+Question: How to know what new commit?
+Answer: use git command 
+git shortlog --no-merges $RANGE | cat # cat is for skipping 
+
+Question: How to know when deploy done?
+Answer: bash will know
+
+Question: Where to put .sh file?
+Answer: directly on intellij project
+
+Question: IDE code bash?
+Answer: intellij
