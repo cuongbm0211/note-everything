@@ -5,3 +5,6 @@ message:"*Timeout*" AND level:WARN AND application:"dise-personalized"
 
 // Get http latency
 message: "http token update"
+
+// Message check vanish work well
+message: "oauth/validate"  AND message: "http-lb" AND http_status_code: 200
